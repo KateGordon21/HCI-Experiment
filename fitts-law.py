@@ -6,8 +6,8 @@ from flask import Flask, render_template
 app = Flask(__name__)
 
 @app.route("/")
-def landing_page():
-    return render_template("landing_page.html")
+def home():
+    return render_template("index.html")
 
 @app.route("/informed-consent")
 def informed_consent():
