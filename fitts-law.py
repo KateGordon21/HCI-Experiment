@@ -13,4 +13,8 @@ def home():
 def informed_consent():
     return render_template("informed_consent.html")
 
+@app.route("/experiment")
+def informed_consent():
+    return render_template("experiment.html")
+
 app.run(debug=True, port=5000)
