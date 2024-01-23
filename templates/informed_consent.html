@@ -2,17 +2,26 @@
     <title>Informed Consent</title>
     <head>
         <style>
-            
+            head {
+                padding: 25px;
+                background-color: red;
+                color: black;
+                font-size: 25px;
+            }
+
+            .dark-mode {
+                background-color: black;
+                color: white;
+            }
         </style>
+
         <h1>Informed Consent</h1>
         <p>Please read the following informed consent document.</p>
     </head>
     <body>
+        <link rel="stylesheet" href="styles.css">
         <style>
             #research-team {
-                border: 1px solid black;
-                padding: 10px;
-                margin: 10px;
             }
         </style>
         <h2>CS470 Project</h2>
@@ -26,7 +35,7 @@
                     </p>
                 </li>
                 <li>
-                    <p> Ethan Stone
+                    <p>Ethan Stone
                         (<a href="mailto:ethan.stone@mnsu.edu">ethan.stone@mnsu.edu</a>)
                     </p>
                 </li>
@@ -57,5 +66,6 @@
         <a href="https://youtu.be/dQw4w9WgXcQ?si=v1csGg2B3hLpUQ_D">
             <button type="button">I do not consent</button>
         </a>
-        <button style="color:red" type="button" onclick="location.href='index.php'">I consent</button> <!-- TODO: Link this when the next page is added -->
+        <button style="color:red" type="button" onclick="location.href='/fitts-intro'">I consent</button> <!-- TODO: Link this when the next page is added -->
+    </footer>
 </html>
