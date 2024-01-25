@@ -27,13 +27,13 @@
 
         #pressA {
             font-size: 24px;
-            color: #007bff; /* Wii's blue color */
+            color: #007bff;
+            /* Wii's blue color */
             font-weight: bold;
         }
 
-        #homeTitle,
-        #homeText,
-        #startButton {
+        #homePage,
+        #informedConsent {
             display: none;
         }
     </style>
@@ -44,7 +44,8 @@
     <div id="healthAndSafetyPage">
         <p>Wii Health and Safety Information</p>
         <p>Read the instructions in the Wii Operations Manual</p>
-        <p id="pressA" onclick="toggleElements()">Press A to continue</p>
+        <p id="pressA" onclick="toggleElements('healthAndSafetyPage', 'homePage', 'mainMenuSound', 'startSound')">Press A to
+            continue</p>
     </div>
 
     <!-- Audio Players -->
@@ -58,49 +59,120 @@
         Your browser does not support the audio element.
     </audio>
 
-    <audio id="loopedSound" loop>
+    <audio id="mainMenuSound" loop>
         <source src="../forbidden-texts/sounds/WiiMusic/MainMenu.mp3" type="audio/mp3">
         Your browser does not support the audio element.
     </audio>
 
-    <h1 id="homeTitle">Human Computer Interaction Project</h1>
-    <p id="homeText">To begin running the experiment, please press the button below. You will be taken to our informed consent sheet that you must agree to in order to begin testing.</p>
+    <audio id="shopSound" loop>
+        <source src="../forbidden-texts/sounds/WiiMusic/ShopSound.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
 
-    <button id="startButton" type="button" onclick="playAudioAndRedirect('informed_consent.html')">Start!</button>
+    <div id="homePage">
+        <h1>Human Computer Interaction Project</h1>
+        <p>To begin running the experiment, please press the button below. You will be taken to our informed consent
+            sheet that you must agree to in order to begin testing.</p>
+        <button id="startButton" type="button"
+            onclick="toggleElements('homePage', 'informedConsent', 'shopSound', 'selectSound')">Start!</button>
+    </div>
+
+    <div id="informedConsent">
+        <h1>Informed Consent</h1>
+        <p>Please read the following informed consent document.</p>
+
+        <link rel="stylesheet" href="styles.css">
+        <style>
+            #research-team {}
+        </style>
+        <h2>CS470 Project</h2>
+        <h3>Fitts' Law study</h3>
+        <div id="research-team" title="Research Team">
+            <h4>Research Team</h4>
+            <ul>
+                <li>
+                    <p>Karl Betcher
+                        (<a href="mailto:karl.betcher@mnsu.edu">karl.betcher@mnsu.edu</a>)
+                    </p>
+                </li>
+                <li>
+                    <p>Ethan Stone
+                        (<a href="mailto:ethan.stone@mnsu.edu">ethan.stone@mnsu.edu</a>)
+                    </p>
+                </li>
+                <li>
+                    <p> Kate Gordon
+                        (<a href="mailto:kate.gordon@mnsu.edu">kate.gordon@mnsu.edu</a>)
+                    </p>
+                </li>
+                <li>
+                    <p> Madeline Ellingson
+                        (<a href="madeline.ellingson@mnsu.edu">madeline.ellingson@mnsu.edu</a>)
+                    </p>
+                </li>
+            </ul>
+        </div>
+        <p>Thank you for agreeing to participate in this research study! This document provides important information
+            about what you will be asked to do during the research study, about the risks and benefits of the study, and
+            about your rights as a research subject. If you have any questions about or do not understand something in
+            this document, you should ask questions to the members of the research team listed above. Do not agree to
+            participate in this research study unless the research team has answered your questions and you decide that
+            you want to be part of this study.</p>
+        <p style="color:red">The purpose of this research study is to evaluate how accurately a user can click on
+            differently-sized circles on screen. During the study, you will be randomly presented with … There will be a
+            total of ___ trials, and each trial will take anywhere from ___ to ___ seconds, depending on your speed. The
+            entire study should take no longer than ___ minutes to complete.</p>
+        <!--TODO: Fill in the blank on when time to complete is chosen-->
+        <p>To participate in this study, you must … </p>
+        <p>To collect data, our software will record how much you move the mouse, how long it takes you to successfully
+            complete each trial, and whether you make any errors. This information will be recorded anonymously, and no
+            personally identifiable information will be collected.</p>
+        <p>You will not be compensated for your participation in this study. We do not believe there are any direct
+            benefits to you based on your participation in the study. We do not anticipate any significant risks in your
+            participating in this study.</p>
+
+        <p>If you consent to the study, press the "I consent" button below.</p>
+        <p>If you do not consent and would like to cancel your participation in the study, click "I do not consent"
+            below.</p>
+        <a href="https://youtu.be/dQw4w9WgXcQ?si=v1csGg2B3hLpUQ_D">
+            <button type="button">I do not consent</button>
+        </a>
+        <button style="color:red" type="button" onclick="location.href='experiment.html'">I consent</button>
+    </div>
 
     <!-- JavaScript to Toggle Elements and Play Audio -->
     <script>
-        var isFirstClick = true;
+        var currentLoopedSound;
 
-        function toggleElements() {
-            var healthAndSafetyPage = document.getElementById("healthAndSafetyPage");
-            var homeTitle = document.getElementById("homeTitle");
-            var homeText = document.getElementById("homeText");
-            var startButton = document.getElementById("startButton");
+        function toggleElements(previousPageName, newPageName, loopSound, selectSound) {
+            // Pause and reset the current looped sound
+            if (currentLoopedSound) {
+                currentLoopedSound.pause();
+                currentLoopedSound.currentTime = 0;
+            }
+
+            // Play the select sound if provided
+            if (selectSound != null) {
+                var sound = document.getElementById(selectSound);
+                sound.play();
+            }
+
+            var previousPage = document.getElementById(previousPageName);
+            var newPage = document.getElementById(newPageName);
 
             // Toggle visibility of elements
-            healthAndSafetyPage.style.display = "none";
-            homeTitle.style.display = "block";
-            homeText.style.display = "block";
-            startButton.style.display = "block";
+            previousPage.style.display = "none";
+            newPage.style.display = "block";
 
-            // Play audio on toggle
-            if (isFirstClick) {
-                var startSound = document.getElementById("startSound");
-                var playPromise = startSound.play();
+            // Play the new looped sound
+            currentLoopedSound = document.getElementById(loopSound);
 
-                if (playPromise !== undefined) {
-                    playPromise.catch(error => {
-                        console.error("Autoplay failed:", error);
-                    }).then(() => {
-                        // Transition completed, play looped sound
-                        var loopedSound = document.getElementById("loopedSound");
-                        loopedSound.play();
-                    });
-                }
+            currentLoopedSound.addEventListener("ended", function () {
+                this.currentTime = 0;
+                this.play();
+            });
 
-                isFirstClick = false;
-            }
+            currentLoopedSound.play(); // Start playing the sound
         }
 
         function playAudioAndRedirect(url) {
