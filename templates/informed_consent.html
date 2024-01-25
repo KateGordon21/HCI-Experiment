@@ -56,6 +56,33 @@
         <p>To participate in this study, you must … </p>
         <p>To collect data, our software will record how much you move the mouse, how long it takes you to successfully complete each trial, and whether you make any errors. This information will be recorded anonymously, and no personally identifiable information will be collected.</p>
         <p>You will not be compensated for your participation in this study. We do not believe there are any direct benefits to you based on your participation in the study. We do not anticipate any significant risks in your participating in this study.</p>
+
+        <!-- Audio Player -->
+        <audio id="shopSound">
+            <source src="../forbidden-texts/sounds/WiiMusic/ShopSound.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+
+        <audio id="intro">
+            <source src="../forbidden-texts/sounds/WiiMusic/Intro.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+
+        <!-- JavaScript to Play Sound and Redirect -->
+        <script>
+            window.onload = function () {
+                var audio = document.getElementById("shopSound");
+                audio.play();
+            };
+
+            function playAudioAndRedirect(url) {
+                var audio = document.getElementById("intro");
+                audio.play();
+                setTimeout(function () {
+                    window.location.href = url;
+                }, audio.duration * 1000); // Redirect after the duration of the audio
+            }
+        </script>
     </body>
     <footer>
         <style>
