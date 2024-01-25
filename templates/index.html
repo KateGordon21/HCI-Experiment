@@ -2,38 +2,44 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="styles.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Human Computer Interaction Project</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #ffffff;
             color: #000000;
+            background-color: #000;
             text-align: center;
             margin: 0;
             padding: 0;
         }
 
+        head {
+            margin: 0;
+            padding: 0;
+            display: none;
+        }
+
+        footer {
+            margin: 0;
+            padding: 0;
+            display: none;
+        }
+
         #healthAndSafetyPage {
-            display: block;
+            background-color: #000;
             text-align: center;
             font-size: 18px;
-            color: #333;
+            font-weight: bold;
+            color: #ffffff;
             margin-top: 50vh;
             transform: translateY(-50%);
         }
 
-        #pressA {
-            font-size: 24px;
-            color: #007bff;
-            /* Wii's blue color */
-            font-weight: bold;
-        }
-
         #homePage,
         #informedConsent {
+            background-color: #ffffff;
             display: none;
         }
     </style>
@@ -42,9 +48,11 @@
 <body>
 
     <div id="healthAndSafetyPage">
-        <p>Wii Health and Safety Information</p>
-        <p>Read the instructions in the Wii Operations Manual</p>
-        <p id="pressA" onclick="toggleElements('healthAndSafetyPage', 'homePage', 'mainMenuSound', 'startSound')">Press A to
+        <h1 style="font-size: xx-large;"><img src="../forbidden-texts/warning.png" height="40" width="40">  WARNING-HEALTH AND SAFETY</h1>
+        <p>BEFORE PLAYING. READ YOUR OPERATIONS MANUAL FOR IMPORTANT INFORMATION ABOUT YOUR HEALTH AND SAFETY</p>
+        <p>Also online at</p>
+        <p>www.nintendo.com/healthsafety/</p>
+        <p id="pressA" onclick="toggleElements('healthAndSafetyPage', 'homePage', 'mainMenuSound', 'startSound')">Press <img src="../forbidden-texts/a-icon.png" height="20" width="20"> to
             continue</p>
     </div>
 
@@ -81,7 +89,6 @@
         <h1>Informed Consent</h1>
         <p>Please read the following informed consent document.</p>
 
-        <link rel="stylesheet" href="styles.css">
         <style>
             #research-team {}
         </style>
@@ -163,6 +170,8 @@
             // Toggle visibility of elements
             previousPage.style.display = "none";
             newPage.style.display = "block";
+
+            document.body.style.backgroundColor = (newPageName === 'healthAndSafetyPage') ? '#000' : '#ffffff';
 
             // Play the new looped sound
             currentLoopedSound = document.getElementById(loopSound);
