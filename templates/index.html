@@ -15,7 +15,7 @@
         <p id="description">BEFORE PLAYING. READ YOUR OPERATIONS MANUAL FOR IMPORTANT INFORMATION ABOUT YOUR HEALTH AND SAFETY</p>
         <p id="notice">Also online at</p>
         <p id="link">www.nintendo.com/healthsafety/</p>
-        <p id="pressA" onclick="toggleElements('healthAndSafetyPage', 'homePage', 'mainMenuSound', 'startSound')">Press<img src="../forbidden-texts/a-icon.png" height="30">to
+        <p id="pressA">Press<img src="../forbidden-texts/a-icon.png" height="30">to
             continue</p>
     </div>
 
@@ -44,8 +44,7 @@
         <h1>Human Computer Interaction Project</h1>
         <p>To begin running the experiment, please press the button below. You will be taken to our informed consent
             sheet that you must agree to in order to begin testing.</p>
-        <button id="startButton" type="button"
-            onclick="toggleElements('homePage', 'informedConsent', 'shopSound', 'selectSound')">Start!</button>
+        <button id="startButton" type="button">Start!</button>
     </div>
 
     <div id="informedConsent">
@@ -110,51 +109,7 @@
         <button style="color:red" type="button" onclick="location.href='experiment.html'">I consent</button>
     </div>
 
-    <!-- JavaScript to Toggle Elements and Play Audio -->
-    <script>
-        var currentLoopedSound;
-
-        function toggleElements(previousPageName, newPageName, loopSound, selectSound) {
-            // Pause and reset the current looped sound
-            if (currentLoopedSound) {
-                currentLoopedSound.pause();
-                currentLoopedSound.currentTime = 0;
-            }
-
-            // Play the select sound if provided
-            if (selectSound != null) {
-                var sound = document.getElementById(selectSound);
-                sound.play();
-            }
-
-            var previousPage = document.getElementById(previousPageName);
-            var newPage = document.getElementById(newPageName);
-
-            // Toggle visibility of elements
-            previousPage.style.display = "none";
-            newPage.style.display = "block";
-
-            document.body.style.backgroundColor = (newPageName === 'healthAndSafetyPage') ? '#000' : '#ffffff';
-
-            // Play the new looped sound
-            currentLoopedSound = document.getElementById(loopSound);
-
-            currentLoopedSound.addEventListener("ended", function () {
-                this.currentTime = 0;
-                this.play();
-            });
-
-            currentLoopedSound.play(); // Start playing the sound
-        }
-
-        function playAudioAndRedirect(url) {
-            var audio = document.getElementById("selectSound");
-            audio.play();
-            setTimeout(function () {
-                window.location.href = url;
-            }, audio.duration * 1000); // Redirect after the duration of the audio
-        }
-    </script>
+    <script src="main.js"></script>
 
 </body>
 
