@@ -4,55 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
     <title>Human Computer Interaction Project</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            color: #000000;
-            background-color: #000;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-        }
-
-        head {
-            margin: 0;
-            padding: 0;
-            display: none;
-        }
-
-        footer {
-            margin: 0;
-            padding: 0;
-            display: none;
-        }
-
-        #healthAndSafetyPage {
-            background-color: #000;
-            text-align: center;
-            font-size: 18px;
-            font-weight: bold;
-            color: #ffffff;
-            margin-top: 50vh;
-            transform: translateY(-50%);
-        }
-
-        #homePage,
-        #informedConsent {
-            background-color: #ffffff;
-            display: none;
-        }
-    </style>
 </head>
 
 <body>
 
     <div id="healthAndSafetyPage">
-        <h1 style="font-size: xx-large;"><img src="../forbidden-texts/warning.png" height="40" width="40">  WARNING-HEALTH AND SAFETY</h1>
-        <p>BEFORE PLAYING. READ YOUR OPERATIONS MANUAL FOR IMPORTANT INFORMATION ABOUT YOUR HEALTH AND SAFETY</p>
-        <p>Also online at</p>
-        <p>www.nintendo.com/healthsafety/</p>
-        <p id="pressA" onclick="toggleElements('healthAndSafetyPage', 'homePage', 'mainMenuSound', 'startSound')">Press <img src="../forbidden-texts/a-icon.png" height="20" width="20"> to
+        <h1><img src="../forbidden-texts/warning.png" height="60">  WARNING-HEALTH AND SAFETY</h1>
+        <p id="description">BEFORE PLAYING. READ YOUR OPERATIONS MANUAL FOR IMPORTANT INFORMATION ABOUT YOUR HEALTH AND SAFETY</p>
+        <p id="notice">Also online at</p>
+        <p id="link">www.nintendo.com/healthsafety/</p>
+        <p id="pressA" onclick="toggleElements('healthAndSafetyPage', 'homePage', 'mainMenuSound', 'startSound')">Press<img src="../forbidden-texts/a-icon.png" height="30">to
             continue</p>
     </div>
 

@@ -1,0 +1,82 @@
+body {
+    font-family: Arial, sans-serif;
+    color: #000000;
+    background-color: #000;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+head {
+    margin: 0;
+    padding: 0;
+    display: none;
+}
+
+footer {
+    margin: 0;
+    padding: 0;
+    display: none;
+}
+
+#healthAndSafetyPage {
+    background-color: #000;
+    text-align: center;
+    justify-content: center;
+    color: #ffffff;
+    margin-top: 50vh;
+    transform: translateY(-50%);
+}
+
+#healthAndSafetyPage h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 3vh;
+    font-size: 60px;
+    font-weight: bold;
+}
+
+#description {
+    font-size: 40px;
+    margin: 0 26%;
+    padding-bottom: 3vh;
+}
+
+#notice {
+    font-size: 20px;
+    padding-bottom: 1vh;
+    margin: 0;
+}
+
+#link {
+    font-size: 25px;
+    font-weight: bold;
+    padding: 0;
+    margin: 0;
+}
+
+@keyframes fadeInOut {
+    0% {opacity: 0;}
+    50% {opacity: 1;}
+    100% {opacity: 0;}
+}
+
+#pressA {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    padding-top: 1vh;
+    animation: fadeInOut 2s infinite;
+}
+
+#pressA img {
+    margin: 0 13px;
+}
+
+#homePage,
+#informedConsent {
+    background-color: #ffffff;
+    display: none;
+}
