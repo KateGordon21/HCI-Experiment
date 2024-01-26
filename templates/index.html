@@ -10,43 +10,45 @@
 
 <body>
 
+    <!-- START Health and Safety Page -->
     <div id="healthAndSafetyPage">
-        <h1><img src="../forbidden-texts/warning.png" height="60">  WARNING-HEALTH AND SAFETY</h1>
+        <h1><img src="../forbidden-texts/warning.png" height="60"> WARNING-HEALTH AND SAFETY</h1>
         <p id="description">BEFORE PLAYING. READ YOUR OPERATIONS MANUAL FOR IMPORTANT INFORMATION ABOUT YOUR HEALTH AND SAFETY</p>
         <p id="notice">Also online at</p>
         <p id="link">www.nintendo.com/healthsafety/</p>
         <p id="pressA">Press<img src="../forbidden-texts/a-icon.png" height="30">to
             continue</p>
     </div>
+    <!-- END Health and Safety Page-->
 
-    <!-- Audio Players -->
-    <audio id="startSound">
-        <source src="../forbidden-texts/sounds/WiiBIOS/WII-START.wav" type="audio/wav">
-        Your browser does not support the audio element.
-    </audio>
-
-    <audio id="selectSound">
-        <source src="../forbidden-texts/sounds/WiiBIOS/Sample_0018.wav" type="audio/wav">
-        Your browser does not support the audio element.
-    </audio>
-
-    <audio id="mainMenuSound" loop>
-        <source src="../forbidden-texts/sounds/WiiMusic/MainMenu.mp3" type="audio/mp3">
-        Your browser does not support the audio element.
-    </audio>
-
-    <audio id="shopSound" loop>
-        <source src="../forbidden-texts/sounds/WiiMusic/ShopSound.mp3" type="audio/mp3">
-        Your browser does not support the audio element.
-    </audio>
-
+    <!-- START Home Page-->
     <div id="homePage">
         <h1>Human Computer Interaction Project</h1>
         <p>To begin running the experiment, please press the button below. You will be taken to our informed consent
             sheet that you must agree to in order to begin testing.</p>
-        <button id="startButton" type="button">Start!</button>
+        <button id="startButton" type="button">
+            <img src="../forbidden-texts/StartButton.png">
+        </button>
     </div>
+    <!-- END Home Page-->
 
+    <!-- START Loading Page -->
+    <div id="loadingPage">
+        <div class="loading-container" id="loadingContainer">
+            <div class="loading-square blue"></div>
+            <div class="loading-square medium-blue"></div>
+            <div class="loading-square light-blue"></div>
+            <div class="loading-square medium-blue"></div>
+            <div class="static-square"></div>
+            <div class="loading-square light-blue"></div>
+            <div class="loading-square light-blue"></div>
+            <div class="loading-square light-blue"></div>
+            <div class="loading-square light-blue"></div>
+        </div>
+    </div>
+    <!-- END Loading Page -->
+
+    <!-- START Informed Consent Page -->
     <div id="informedConsent">
         <h1>Informed Consent</h1>
         <p>Please read the following informed consent document.</p>
@@ -108,6 +110,28 @@
         </a>
         <button style="color:red" type="button" onclick="location.href='experiment.html'">I consent</button>
     </div>
+    <!-- END Informed Consent Page -->
+
+    <!-- Audio Players -->
+    <audio id="startSound">
+        <source src="../forbidden-texts/sounds/WiiBIOS/WII-START.wav" type="audio/wav">
+        Your browser does not support the audio element.
+    </audio>
+
+    <audio id="selectSound">
+        <source src="../forbidden-texts/sounds/WiiBIOS/Sample_0018.wav" type="audio/wav">
+        Your browser does not support the audio element.
+    </audio>
+
+    <audio id="mainMenuSound" loop>
+        <source src="../forbidden-texts/sounds/WiiMusic/MainMenu.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <audio id="shopSound" loop>
+        <source src="../forbidden-texts/sounds/WiiMusic/ShopSound.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
 
     <script src="main.js"></script>
 
