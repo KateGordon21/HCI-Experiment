@@ -1,3 +1,7 @@
+* {
+    cursor: url('../forbidden-texts/cursor/WiiCursor.png'), auto;
+}
+
 body {
     font-family: Arial, sans-serif;
     color: #000000;
@@ -5,7 +9,6 @@ body {
     text-align: center;
     margin: 0;
     padding: 0;
-    cursor: url('../forbidden-texts/cursor/WiiCursor.png'), auto;
 }
 
 head {
@@ -82,7 +85,6 @@ footer {
 #loadingPage {
     background-color: #000;
     display: none;
-    cursor: url('../forbidden-texts/cursor/WiiCursor.png'), auto;
 }
 
 .loading-container {
@@ -152,5 +154,4 @@ footer {
 #informedConsent {
     background-color: #ffffff;
     display: none;
-    cursor: url('../forbidden-texts/cursor/WiiCursor.png'), auto;
 }
