@@ -5,6 +5,7 @@ body {
     text-align: center;
     margin: 0;
     padding: 0;
+    cursor: url('../forbidden-texts/cursor/WiiCursor.png'), auto;
 }
 
 head {
@@ -79,4 +80,5 @@ footer {
 #informedConsent {
     background-color: #ffffff;
     display: none;
+    cursor: url('../forbidden-texts/cursor/WiiCursor.png'), auto;
 }
