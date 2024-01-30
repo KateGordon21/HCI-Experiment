@@ -1,8 +1,64 @@
 <html>
 <head>
-    <title>Experiment Page</title>
+
 </head>
 <body>
+    <h1>Data Collection</h1>
 
+    <input type="number" id="participantNumber" placeholder="Participant Number">
+    <button id="startParticipantBtn" onclick="createParticipant()">Start New Participant</button>
+    <button onclick="initialClick()">Initial Click</button>
+    <button onclick="targetClick()">Target Click</button>
+    <button onclick="endSession()">End Session</button>
+    <p id="progressParagraph"></p>
+
+    <script>
+
+        function onPageLoad() {
+            getProgress();
+            setInterval(getProgress, 100);
+        }
+        window.onload = onPageLoad;
+
+        async function createParticipant() {
+            const participantInput = document.getElementById('participantNumber');
+            const startParticipantBtn = document.getElementById('startParticipantBtn');
+            const participantNumber = document.getElementById('participantNumber').value;
+
+            if (participantNumber) {
+                const response = await fetch('/create_participant', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: `participant_number=${participantNumber}`,
+                });
+                console.log(await response.text());
+            } else {
+                console.error('Participant number is required.');
+            }
+            participantInput.style.display = 'none';
+            startParticipantBtn.style.display = 'none';
+        }
+
+        async function initialClick() {
+            await fetch('/initial_click', { method: 'POST' });
+        }
+
+        async function targetClick() {
+            await fetch('/target_click', { method: 'POST' });
+        }
+
+        async function endSession() {
+            await fetch('/end_session', { method: 'POST' });
+        }
+
+        async function getProgress() {
+            const response = await fetch('/get_progress');
+            const data = await response.json();
+            const progressParagraph = document.getElementById('progressParagraph');
+            progressParagraph.textContent = `Progress: ${data.progress} out of 300`;
+        }
+    </script>
 </body>
 </html>
