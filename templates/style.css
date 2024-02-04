@@ -87,6 +87,10 @@ footer {
     display: none;
 }
 
+#loadingPage, #loadingPage * {
+    cursor: url('../forbidden-texts/cursor/LoadingCursor.ani'), auto;
+}
+
 .loading-container {
     position: fixed;
     bottom: 20px;
@@ -140,8 +144,10 @@ footer {
     width: 25vh;
 }
 
-#startButton:hover {
+#startButton:hover,
+#startButton img {
     transform: scale(1.1); /* Increase the size of the button by 10% when hovered over */
+    cursor: url('../forbidden-texts/cursor/WiiOpen.png'), auto;
 }
 
 #startButton:active,
