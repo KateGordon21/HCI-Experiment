@@ -1,18 +1,35 @@
 <html>
 <head>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
 
+        #inProgressCanvas {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
 </head>
 <body>
+    <div id="inProgressCanvas" onclick="">
     <h1>Data Collection</h1>
-
     <input type="number" id="participantNumber" placeholder="Participant Number">
     <button id="startParticipantBtn" onclick="createParticipant()">Start New Participant</button>
     <button onclick="initialClick()">Initial Click</button>
     <button onclick="targetClick()">Target Click</button>
     <button onclick="endSession()">End Session</button>
     <p id="progressParagraph"></p>
-
+    </div>
     <script>
+
+        let errorCount = 0;
+
+        function addError(event){
+                errorCount++;
+        }
 
         function onPageLoad() {
             getProgress();
@@ -42,15 +59,22 @@
         }
 
         async function initialClick() {
-            await fetch('/initial_click', { method: 'POST' });
+            errorCount = 0;
+            await fetch('/initial_click', { method: 'POST', });
         }
 
         async function targetClick() {
-            await fetch('/target_click', { method: 'POST' });
+            await fetch('/target_click', { method: 'POST',
+            headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: `error_count=${errorCount}`,});
+            errorCount = 0;
         }
 
-        async function endSession() {
-            await fetch('/end_session', { method: 'POST' });
+        async function endSession(){
+            await fetch('/end_session', {method: 'POST',});
+            window.location.href = "/"
         }
 
         async function getProgress() {
@@ -59,6 +83,13 @@
             const progressParagraph = document.getElementById('progressParagraph');
             progressParagraph.textContent = `Progress: ${data.progress} out of 300`;
         }
+
+        document.getElementById('inProgressCanvas').addEventListener('click', function(event) {
+            // Check if the clicked element is not a button or input
+            if (event.target.tagName !== 'BUTTON' && event.target.tagName !== 'INPUT') {
+                addError();
+            }
+        });
     </script>
 </body>
 </html>

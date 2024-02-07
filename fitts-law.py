@@ -38,13 +38,8 @@ def initial_click():
 
 @app.route('/target_click', methods=['POST'])
 def target_click():
-    data_collector.target_click()
-    return jsonify({'status': 'success'})
-
-
-@app.route('/end_session', methods=['POST'])
-def end_session():
-    data_collector.end_session()
+    error_count = int(request.form['error_count'])
+    data_collector.target_click(error_count)
     return jsonify({'status': 'success'})
 
 
@@ -52,6 +47,11 @@ def end_session():
 def get_progress():
     progress = data_collector.get_progress()
     return jsonify({'progress': progress})
+
+
+@app.route('/end_session', methods=['POST'])
+def end_session():
+    data_collector.end_session()
 
 
 app.run(debug=True, port=4000)
