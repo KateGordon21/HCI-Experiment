@@ -20,7 +20,6 @@ class DataCollector:
         self.start_time = time.time()
 
     def target_click(self, error_count):
-        self.start_time = time.time()
         self.end_time = time.time()
         self.error_count = error_count
         total_time = self.end_time - self.start_time
