@@ -79,6 +79,14 @@ footer {
 #pressA img {
     margin: 0 13px;
 }
+
+#pressA:hover {
+    cursor: url('../forbidden-texts/cursor/WiiOpen.png'), auto;
+}
+
+#pressA img:hover {
+    cursor: url('../forbidden-texts/cursor/WiiOpen.png'), auto;
+}
 /* END Health and Safety Page */
 
 /* START Loading Page */
@@ -132,11 +140,60 @@ footer {
 /* END Loading Page */
 
 /* START Home Page */
+#homePage {
+    background: url('../forbidden-texts/wii_menu.jpg') no-repeat;
+    background-size: cover;
+    background-position: center top 75%;
+    height: 100vh;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* 4 columns */
+    grid-template-rows: repeat(3, 1fr);
+    /* 3 rows */
+    grid-gap: 20px;
+    padding: 20px;
+    height: 65vh;
+}
+
+.grid-item {
+    display: flex;
+    background-color: #808080;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+    justify-content: center;
+    align-items: center;
+}
+
+#hci {
+    background-color: #4a90e2;
+}
+
+#hci:hover {
+    background-color: #357cd5;
+    transform: scale(1.05); /* Increase the size of the button by 10% when hovered over */
+    cursor: url('../forbidden-texts/cursor/WiiOpen.png'), auto;
+}
+
+#hci h1:hover {
+    cursor: url('../forbidden-texts/cursor/WiiOpen.png'), auto;
+}
+
+.grid-item img {
+    max-width: 100px;
+    max-height: 300px;
+}
+/* END Home Page */
+
 #startButton {
     border: none; /* Removes the border */
     padding: 0; /* Removes the padding */
     background: none; /* Removes the background */
-    cursor: pointer; /* Changes the cursor to a pointer when hovering over the button */
     outline: none; /* Removes the outline that appears when the button is focused */
 }
 
@@ -154,7 +211,6 @@ footer {
 #startButton:focus {
     outline: none; /* Removes the outline that appears when the button is clicked or focused */
 }
-/* END Home Page */
 
 #homePage,
 #informedConsent {

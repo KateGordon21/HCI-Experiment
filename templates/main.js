@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
     toggleElements('loadingPage', 'homePage', 'mainMenuSound', null);
     });
 
-    document.getElementById('startButton').addEventListener('click', function() {
+    document.getElementById('hci').addEventListener('click', function() {
         toggleElements('homePage', 'informedConsent', 'shopSound', 'selectSound');
     });
 });
