@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <title>Human Computer Interaction Project</title>
 </head>
 
@@ -12,12 +12,12 @@
 
     <!-- START Health and Safety Page -->
     <div id="healthAndSafetyPage">
-        <h1><img src="../forbidden-texts/warning.png" height="60"> WARNING-HEALTH AND SAFETY</h1>
+        <h1><img src="../static/forbidden-texts/warning.png" height="60"> WARNING-HEALTH AND SAFETY</h1>
         <p id="description">BEFORE PLAYING. READ YOUR OPERATIONS MANUAL FOR IMPORTANT INFORMATION ABOUT YOUR HEALTH AND
             SAFETY.</p>
         <p id="notice">Also online at</p>
         <p id="link">www.nintendo.com/healthsafety/</p>
-        <p id="pressA">Press<img src="../forbidden-texts/a-icon.png" height="30">to
+        <p id="pressA">Press<img src="../static/forbidden-texts/a-icon.png" height="30">to
             continue.</p>
     </div>
     <!-- END Health and Safety Page-->
@@ -147,26 +147,26 @@
 
     <!-- Audio Players -->
     <audio id="startSound">
-        <source src="../forbidden-texts/sounds/WiiBIOS/WII-START.wav" type="audio/wav">
+        <source src="../static/forbidden-texts/sounds/WiiBIOS/WII-START.wav" type="audio/wav">
         Your browser does not support the audio element.
     </audio>
 
     <audio id="selectSound">
-        <source src="../forbidden-texts/sounds/WiiBIOS/Sample_0018.wav" type="audio/wav">
+        <source src="../static/forbidden-texts/sounds/WiiBIOS/Sample_0018.wav" type="audio/wav">
         Your browser does not support the audio element.
     </audio>
 
     <audio id="mainMenuSound" loop>
-        <source src="../forbidden-texts/sounds/WiiMusic/MainMenu.mp3" type="audio/mp3">
+        <source src="../static/forbidden-texts/sounds/WiiMusic/MainMenu.mp3" type="audio/mp3">
         Your browser does not support the audio element.
     </audio>
 
     <audio id="shopSound" loop>
-        <source src="../forbidden-texts/sounds/WiiMusic/ShopSound.mp3" type="audio/mp3">
+        <source src="../static/forbidden-texts/sounds/WiiMusic/ShopSound.mp3" type="audio/mp3">
         Your browser does not support the audio element.
     </audio>
 
-    <script src="main.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 
 </body>
 
