@@ -21,6 +21,10 @@
         #target {
             width: 400px;
             height: 400px;
+            position: absolute;
+            left: auto;
+            top: 50%;
+            transform: translate(0%, 0%);
         }
     </style>
 </head>
@@ -70,16 +74,33 @@
         }
 
         async function passValues() {
-            const button = document.getElementById('experimentButton');
+            const button = document.getElementById('target');
             const values = await fetch('/pass_values');
             const passedValues = await values.json();
-            button.style.width = '${passedValues.lists.at(0)}';
-            button.style.height = '${passedValues.lists.at(0)}';
+            button.style.width = '${passedValues.lists.at(0)}px';
+            button.style.height = '${passedValues.lists.at(0)}px';
+
+            // Calculate the new position
+            const distance = passedValues.lists.at(1);
+            const direction = passedValues.lists.at(2);
+            const centerX = window.innerWidth / 2;
+            const newPosition = centerX + (distance * direction);
+
+            // Set the new position
+            button.style.position = 'absolute';
+            button.style.left = `${newPosition}px`;
+            button.style.top = '50%';
+            button.style.transform = 'translate(-50%, -50%)';
+        }
+
+        async function createTargetList() {
+            await fetch('/create_target_list');
         }
 
         async function initialClick() {
             errorCount = 0;
             await fetch('/initial_click', { method: 'POST', });
+            createTargetList();
         }
 
         async function targetClick() {
@@ -91,6 +112,7 @@
                 body: `error_count=${errorCount}`,
             });
             errorCount = 0;
+            passValues();
         }
 
         async function endSession() {

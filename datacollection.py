@@ -13,6 +13,7 @@ class DataCollector:
         self.diameters = [100, 200, 400, 800]
         self.distances = [100, 200, 400, 800]
         self.directions = [-1, 1]
+        self.final_array = []
 
     def create_participant(self, participant_number):
         number = str(participant_number)
@@ -21,15 +22,14 @@ class DataCollector:
             pass
 
     def pass_values(self):
-        return final_array.pop()
+        return self.final_array.pop()
 
     def create_target_list(self):
-        final_array = []
         for i in self.diameters:
             for j in self.distances:
                 for k in self.directions:
-                    final_array.append([self.diameters[i], self.distances[j], self.directions[k]])
-        shuffle(final_array)
+                    self.final_array.append([self.diameters[i], self.distances[j], self.directions[k]])
+        shuffle(self.final_array)
 
 
     def initial_click(self):

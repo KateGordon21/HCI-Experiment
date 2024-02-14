@@ -56,7 +56,8 @@ def pass_values():
 
 @app.route('/create_target_list', methods=['GET'])
 def create_target_list():
-    data_collector.create_target_list()
+    targetlists = data_collector.create_target_list()
+    return jsonify({'targetlists': targetlists})
 
 
 @app.route('/end_session', methods=['POST'])
