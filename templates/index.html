@@ -1,10 +1,173 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <title>Human Computer Interaction Project</title>
-    <head>
-        <link rel="stylesheet" href="styles.css">
-        <!-- merlin picture :) img src="https://cdn.discordapp.com/attachments/1019718536836427837/1197656100351262831/20240118_122620.jpg?ex=65bc0f29&is=65a99a29&hm=2799bebd6f096f500df19e47e5aee639bf02f3a7dd9d58c6fffb7373d85ecae1&" height="720" width="1280" alt="the best boy" -->
-        <h1>Human Computer Interaction Project</h1>
-        <p>To begin running the experiment please press the button below. You will be taken to our informed consent sheet that you must agree to in order to begin testing.</p>
-    </head>
-    <button type="submit" onclick="location.href='/informed-consent'">Start!</button>
+</head>
+
+<body>
+
+    <!-- START Health and Safety Page -->
+    <div id="healthAndSafetyPage">
+        <h1><img src="../static/forbidden-texts/warning.png" height="60"> WARNING-HEALTH AND SAFETY</h1>
+        <p id="description">BEFORE PLAYING. READ YOUR OPERATIONS MANUAL FOR IMPORTANT INFORMATION ABOUT YOUR HEALTH AND
+            SAFETY.</p>
+        <p id="notice">Also online at</p>
+        <p id="link">www.nintendo.com/healthsafety/</p>
+        <p id="pressA">Press<img src="../static/forbidden-texts/a-icon.png" height="30">to
+            continue.</p>
+    </div>
+    <!-- END Health and Safety Page-->
+
+    <!-- START Home Page-->
+    <div id="homePage">
+        <div class="grid-container">
+            <div class="grid-item" id="hci">
+                <h1>Human Computer Interaction Project</h1>
+            </div>
+            <div class="grid-item">
+                <h1>Wii</h1>
+            </div>
+            <div class="grid-item">
+                <h1>Wii</h1>
+            </div>
+            <div class="grid-item">
+                <h1>Wii</h1>
+            </div>
+            <div class="grid-item">
+                <h1>Wii</h1>
+            </div>
+            <div class="grid-item">
+                <h1>Wii</h1>
+            </div>
+            <div class="grid-item">
+                <h1>Wii</h1>
+            </div>
+            <div class="grid-item">
+                <h1>Wii</h1>
+            </div>
+            <div class="grid-item">
+                <h1>Wii</h1>
+            </div>
+            <div class="grid-item">
+                <h1>Wii</h1>
+            </div>
+            <div class="grid-item">
+                <h1>Wii</h1>
+            </div>
+            <div class="grid-item">
+                <h1>Wii</h1>
+            </div>
+        </div>
+    </div>
+    <!-- END Home Page-->
+
+    <!-- START Loading Page -->
+    <div id="loadingPage">
+        <div class="loading-container" id="loadingContainer">
+            <div class="loading-square blue"></div>
+            <div class="loading-square medium-blue"></div>
+            <div class="loading-square light-blue"></div>
+            <div class="loading-square medium-blue"></div>
+            <div class="static-square"></div>
+            <div class="loading-square light-blue"></div>
+            <div class="loading-square light-blue"></div>
+            <div class="loading-square light-blue"></div>
+            <div class="loading-square light-blue"></div>
+        </div>
+    </div>
+    <!-- END Loading Page -->
+
+    <!-- START Informed Consent Page -->
+    <div id="informedConsent">
+        <h1>Informed Consent</h1>
+        <p>Please read the following informed consent document.</p>
+
+        <style>
+            #research-team {}
+        </style>
+        <h2>CS470 Project</h2>
+        <h3>Fitts' Law study</h3>
+        <div id="research-team" title="Research Team">
+            <h4>Research Team</h4>
+            <ul>
+                <li>
+                    <p>Karl Betcher
+                        (<a href="mailto:karl.betcher@mnsu.edu">karl.betcher@mnsu.edu</a>)
+                    </p>
+                </li>
+                <li>
+                    <p>Ethan Stone
+                        (<a href="mailto:ethan.stone@mnsu.edu">ethan.stone@mnsu.edu</a>)
+                    </p>
+                </li>
+                <li>
+                    <p> Kate Gordon
+                        (<a href="mailto:kate.gordon@mnsu.edu">kate.gordon@mnsu.edu</a>)
+                    </p>
+                </li>
+                <li>
+                    <p> Madeline Ellingson
+                        (<a href="madeline.ellingson@mnsu.edu">madeline.ellingson@mnsu.edu</a>)
+                    </p>
+                </li>
+            </ul>
+        </div>
+        <p>Thank you for agreeing to participate in this research study! This document provides important information
+            about what you will be asked to do during the research study, about the risks and benefits of the study, and
+            about your rights as a research subject. If you have any questions about or do not understand something in
+            this document, you should ask questions to the members of the research team listed above. Do not agree to
+            participate in this research study unless the research team has answered your questions and you decide that
+            you want to be part of this study.</p>
+        <p style="color:red">The purpose of this research study is to evaluate how accurately a user can click on
+            differently-sized circles on screen. During the study, you will be randomly presented with … There will be a
+            total of ___ trials, and each trial will take anywhere from ___ to ___ seconds, depending on your speed. The
+            entire study should take no longer than ___ minutes to complete.</p>
+        <!--TODO: Fill in the blank on when time to complete is chosen-->
+        <p>To participate in this study, you must … </p>
+        <p>To collect data, our software will record how much you move the mouse, how long it takes you to successfully
+            complete each trial, and whether you make any errors. This information will be recorded anonymously, and no
+            personally identifiable information will be collected.</p>
+        <p>You will not be compensated for your participation in this study. We do not believe there are any direct
+            benefits to you based on your participation in the study. We do not anticipate any significant risks in your
+            participating in this study.</p>
+
+        <p>If you consent to the study, press the "I consent" button below.</p>
+        <p>If you do not consent and would like to cancel your participation in the study, click "I do not consent"
+            below.</p>
+        <a href="https://youtu.be/dQw4w9WgXcQ?si=v1csGg2B3hLpUQ_D">
+            <button type="button">I do not consent</button>
+        </a>
+        <button type="button" onclick="location.href='experiment.html'">I consent</button>
+    </div>
+    <!-- END Informed Consent Page -->
+
+    <!-- Audio Players -->
+    <audio id="startSound">
+        <source src="../static/forbidden-texts/sounds/WiiBIOS/WII-START.wav" type="audio/wav">
+        Your browser does not support the audio element.
+    </audio>
+
+    <audio id="selectSound">
+        <source src="../static/forbidden-texts/sounds/WiiBIOS/Sample_0018.wav" type="audio/wav">
+        Your browser does not support the audio element.
+    </audio>
+
+    <audio id="mainMenuSound" loop>
+        <source src="../static/forbidden-texts/sounds/WiiMusic/MainMenu.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <audio id="shopSound" loop>
+        <source src="../static/forbidden-texts/sounds/WiiMusic/ShopSound.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+
 </html>

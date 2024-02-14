@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wii Loading Animation</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 50vh;
+            background-color: #000;
+        }
+
+        .loading-container {
+            display: grid;
+            grid-template-columns: repeat(3, 40px); /* Adjust the width of the columns */
+            grid-template-rows: repeat(3, 40px); /* Adjust the height of the rows */
+            gap: 3px; /* Adjust the gap between squares */
+        }
+
+        .loading-square {
+            width: 22px; /* Adjust the width of the squares */
+            height: 22px; /* Adjust the height of the squares */
+            border-radius: 2px;
+        }
+
+        .static-square {
+            width: 22px;
+            height: 22px;
+            border-radius: 2px;
+            background-color: #2187DC;
+        }
+
+        .blue {
+            background-color: #007bff;
+        }
+
+        .medium-blue {
+            background-color: #2187DC;
+        }
+
+        .light-blue {
+            background-color: #3EA4E6;
+        }
+
+        .black {
+            background-color: #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="loading-container" id="loadingContainer">
+        <div class="loading-square blue"></div>
+        <div class="loading-square medium-blue"></div>
+        <div class="loading-square light-blue"></div>
+        <div class="loading-square medium-blue"></div>
+        <div class="static-square"></div>
+        <div class="loading-square light-blue"></div>
+        <div class="loading-square light-blue"></div>
+        <div class="loading-square light-blue"></div>
+        <div class="loading-square light-blue"></div>
+    </div>
+
+    <script>
+        var squares = document.querySelectorAll('.loading-square');
+        var indices = [0, 1, 2, 4, 7, 6, 5, 3];
+
+        async function switchColor() {
+            for (let i = 0; i < indices.length; i++) {
+                if(squares[indices[i]].classList.contains('blue'))
+                {
+                    squares[indices[i]].classList.remove('blue');
+                    squares[indices[i]].classList.add('black');
+                    await new Promise(resolve => setTimeout(resolve, 76));
+                    squares[indices[i]].classList.remove('black');
+                    squares[indices[i]].classList.add('blue');
+                }
+                else if(squares[indices[i]].classList.contains('medium-blue'))
+                {
+                    squares[indices[i]].classList.remove('medium-blue');
+                    squares[indices[i]].classList.add('black');
+                    await new Promise(resolve => setTimeout(resolve, 76));
+                    squares[indices[i]].classList.remove('black');
+                    squares[indices[i]].classList.add('medium-blue');
+                }
+                else
+                {
+                    squares[indices[i]].classList.remove('light-blue');
+                    squares[indices[i]].classList.add('black');
+                    await new Promise(resolve => setTimeout(resolve, 76));
+                    squares[indices[i]].classList.remove('black');
+                    squares[indices[i]].classList.add('light-blue');
+                }
+
+            }
+
+            setTimeout(switchColor, 0); // Call the function again after the sequence is completed
+        }
+
+        // Start the animation
+        switchColor();
+    </script>
+</body>
+
+</html>

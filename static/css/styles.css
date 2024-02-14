@@ -1,0 +1,219 @@
+* {
+    cursor: url('../forbidden-texts/cursor/WiiCursor.png'), auto;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #000000;
+    background-color: #000;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+head {
+    margin: 0;
+    padding: 0;
+    display: none;
+}
+
+footer {
+    margin: 0;
+    padding: 0;
+    display: none;
+}
+
+/* START Health and Safety Page */
+#healthAndSafetyPage {
+    background-color: #000;
+    text-align: center;
+    justify-content: center;
+    color: #ffffff;
+    margin-top: 50vh;
+    transform: translateY(-50%);
+}
+
+#healthAndSafetyPage h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 3vh;
+    font-size: 60px;
+    font-weight: bold;
+}
+
+#description {
+    font-size: 40px;
+    margin: 0 26%;
+    padding-bottom: 3vh;
+}
+
+#notice {
+    font-size: 20px;
+    padding-bottom: 1vh;
+    margin: 0;
+}
+
+#link {
+    font-size: 25px;
+    font-weight: bold;
+    padding: 0;
+    margin: 0;
+}
+
+@keyframes fadeInOut {
+    0% {opacity: 0;}
+    50% {opacity: 1;}
+    100% {opacity: 0;}
+}
+
+#pressA {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    padding-top: 1vh;
+    animation: fadeInOut 2s infinite;
+}
+
+#pressA img {
+    margin: 0 13px;
+}
+
+#pressA:hover {
+    cursor: url('../forbidden-texts/cursor/WiiOpen.png'), auto;
+}
+
+#pressA img:hover {
+    cursor: url('../forbidden-texts/cursor/WiiOpen.png'), auto;
+}
+/* END Health and Safety Page */
+
+/* START Loading Page */
+#loadingPage {
+    background-color: #000;
+    display: none;
+}
+
+#loadingPage, #loadingPage * {
+    cursor: url('../forbidden-texts/cursor/LoadingCursor.ani'), auto;
+}
+
+.loading-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 40px); /* Adjust the width of the columns */
+    grid-template-rows: repeat(3, 40px); /* Adjust the height of the rows */
+    gap: 3px; /* Adjust the gap between squares */
+}
+
+.loading-square {
+    width: 22px; /* Adjust the width of the squares */
+    height: 22px; /* Adjust the height of the squares */
+    border-radius: 2px;
+}
+
+.static-square {
+    width: 22px;
+    height: 22px;
+    border-radius: 2px;
+    background-color: #2187DC;
+}
+
+.blue {
+    background-color: #007bff;
+}
+
+.medium-blue {
+    background-color: #2187DC;
+}
+
+.light-blue {
+    background-color: #3EA4E6;
+}
+
+.black {
+    background-color: #000;
+}
+/* END Loading Page */
+
+/* START Home Page */
+#homePage {
+    background: url('../forbidden-texts/wii_menu.jpg') no-repeat;
+    background-size: cover;
+    background-position: center top 75%;
+    height: 100vh;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* 4 columns */
+    grid-template-rows: repeat(3, 1fr);
+    /* 3 rows */
+    grid-gap: 20px;
+    padding: 20px;
+    height: 65vh;
+}
+
+.grid-item {
+    display: flex;
+    background-color: #808080;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+    justify-content: center;
+    align-items: center;
+}
+
+#hci {
+    background-color: #4a90e2;
+}
+
+#hci:hover {
+    background-color: #357cd5;
+    transform: scale(1.05); /* Increase the size of the button by 10% when hovered over */
+    cursor: url('../forbidden-texts/cursor/WiiOpen.png'), auto;
+}
+
+#hci h1:hover {
+    cursor: url('../forbidden-texts/cursor/WiiOpen.png'), auto;
+}
+
+.grid-item img {
+    max-width: 100px;
+    max-height: 300px;
+}
+/* END Home Page */
+
+#startButton {
+    border: none; /* Removes the border */
+    padding: 0; /* Removes the padding */
+    background: none; /* Removes the background */
+    outline: none; /* Removes the outline that appears when the button is focused */
+}
+
+#startButton img {
+    width: 25vh;
+}
+
+#startButton:hover,
+#startButton img {
+    transform: scale(1.1); /* Increase the size of the button by 10% when hovered over */
+    cursor: url('../forbidden-texts/cursor/WiiOpen.png'), auto;
+}
+
+#startButton:active,
+#startButton:focus {
+    outline: none; /* Removes the outline that appears when the button is clicked or focused */
+}
+
+#homePage,
+#informedConsent {
+    background-color: #ffffff;
+    display: none;
+}
