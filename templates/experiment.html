@@ -11,6 +11,11 @@
             width: 100%;
             height: 100%;
         }
+
+        #target {
+            width: 400px;
+            height: 400px;
+        }
     </style>
 </head>
 <body>
@@ -22,6 +27,9 @@
     <button onclick="targetClick()">Target Click</button>
     <button onclick="endSession()">End Session</button>
     <p id="progressParagraph"></p>
+    </div>
+    <div id="target">
+    <button id="experimentButton" onclick="passValues()">Click Button</button>
     </div>
     <script>
 
@@ -56,6 +64,14 @@
             }
             participantInput.style.display = 'none';
             startParticipantBtn.style.display = 'none';
+        }
+
+        async function passValues() {
+            const button = document.getElementById('experimentButton');
+            const values = await fetch('/pass_values');
+            const passedValues = await values.json();
+            button.style.width = '${passedValues.lists.at(0)}';
+            button.style.height = '${passedValues.lists.at(0)}';
         }
 
         async function initialClick() {

@@ -49,6 +49,16 @@ def get_progress():
     return jsonify({'progress': progress})
 
 
+@app.route('/pass_values', methods=['GET'])
+def pass_values():
+    lists = data_collector.pass_values()
+    return jsonify({'lists': lists})
+
+@app.route('/create_target_list', methods=['GET'])
+def create_target_list():
+    data_collector.create_target_list()
+
+
 @app.route('/end_session', methods=['POST'])
 def end_session():
     data_collector.end_session()
