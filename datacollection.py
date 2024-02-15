@@ -10,8 +10,8 @@ class DataCollector:
         self.start_time = 0
         self.end_time = 0
         self.error_count = 0
-        self.diameters = [100, 200, 400, 800]
-        self.distances = [100, 200, 400, 800]
+        self.diameters = [20, 40, 80, 160]
+        self.distances = [50, 100, 200, 400]
         self.directions = [-1, 1]
         self.final_array = []
 
@@ -25,9 +25,9 @@ class DataCollector:
         return self.final_array.pop()
 
     def create_target_list(self):
-        for i in self.diameters:
-            for j in self.distances:
-                for k in self.directions:
+        for i in range(len(self.diameters)):
+            for j in range(len(self.distances)):
+                for k in range(len(self.directions)):
                     self.final_array.append([self.diameters[i], self.distances[j], self.directions[k]])
         shuffle(self.final_array)
 
