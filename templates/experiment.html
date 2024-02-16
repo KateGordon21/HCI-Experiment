@@ -43,7 +43,7 @@
         <h1>Data Collection</h1>
         <input type="number" id="participantNumber" placeholder="Participant Number">
         <button id="startParticipantBtn" onclick="createParticipant()">Start New Participant</button>
-        <button id="centerButton" onclick="initialClick()">Initial Click</button>
+        <button id="centerButton" onclick="initialClick()" hidden>Initial Click</button>
         <button id="target"  onclick="targetClick()">Target Click</button>
         <button onclick="endSession()">End Session</button>
         <p id="progressParagraph"></p>
@@ -64,6 +64,7 @@
         async function createParticipant() {
             const participantInput = document.getElementById('participantNumber');
             const startParticipantBtn = document.getElementById('startParticipantBtn');
+            const initial = document.getElementById('centerButton');
             const participantNumber = document.getElementById('participantNumber').value;
 
             if (participantNumber) {
@@ -80,6 +81,7 @@
             }
             participantInput.style.display = 'none';
             startParticipantBtn.style.display = 'none';
+            initial.hidden = false;
             createTargetList();
         }
 
