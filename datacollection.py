@@ -22,13 +22,16 @@ class DataCollector:
             pass
 
     def pass_values(self):
-        return self.final_array.pop()
+        diameter, distance, direction = self.final_array.pop() 
+        self.participant_data.extend([diameter, distance, direction]) 
+        return diameter, distance, direction
 
     def create_target_list(self):
-        for i in range(len(self.diameters)):
-            for j in range(len(self.distances)):
-                for k in range(len(self.directions)):
-                    self.final_array.append([self.diameters[i], self.distances[j], self.directions[k]])
+        for i in range(10):
+            for i in range(len(self.diameters)):
+                for j in range(len(self.distances)):
+                    for k in range(len(self.directions)):
+                        self.final_array.append([self.diameters[i], self.distances[j], self.directions[k]])
         shuffle(self.final_array)
 
 
@@ -42,8 +45,6 @@ class DataCollector:
 
         self.participant_data.append(total_time)
         self.participant_data.append(self.error_count)
-        self.participant_data.append(self.diameter)
-        self.participant_data.append(self.distance)
 
         with open(self.data_file, mode='a', newline='') as file:
             writer = csv.writer(file)

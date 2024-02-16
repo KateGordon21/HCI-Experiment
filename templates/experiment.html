@@ -25,6 +25,15 @@
             left: auto;
             top: 50%;
             transform: translate(0%, 0%);
+            visibility: hidden;
+        }
+
+        #centerButton {
+            width: 80px;
+            height: 80px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
         }
     </style>
 </head>
@@ -35,7 +44,7 @@
         <input type="number" id="participantNumber" placeholder="Participant Number">
         <button id="startParticipantBtn" onclick="createParticipant()">Start New Participant</button>
         <button id="centerButton" onclick="initialClick()">Initial Click</button>
-        <button id="target" onclick="targetClick()">Target Click</button>
+        <button id="target"  onclick="targetClick()">Target Click</button>
         <button onclick="endSession()">End Session</button>
         <p id="progressParagraph"></p>
     </div>
@@ -71,6 +80,7 @@
             }
             participantInput.style.display = 'none';
             startParticipantBtn.style.display = 'none';
+            createTargetList();
         }
 
         async function passValues() {
@@ -100,7 +110,8 @@
         async function initialClick() {
             errorCount = 0;
             await fetch('/initial_click', { method: 'POST', });
-            createTargetList();
+            document.getElementById('centerButton').style.visibility = 'hidden';
+            document.getElementById('target').style.visibility = 'visible';
         }
 
         async function targetClick() {
@@ -112,7 +123,9 @@
                 body: `error_count=${errorCount}`,
             });
             errorCount = 0;
-            passValues();
+            await passValues();
+            document.getElementById('centerButton').style.visibility = 'visible';
+            document.getElementById('target').style.visibility = 'hidden';
         }
 
         async function endSession() {
@@ -124,7 +137,7 @@
             const response = await fetch('/get_progress');
             const data = await response.json();
             const progressParagraph = document.getElementById('progressParagraph');
-            progressParagraph.textContent = `Progress: ${data.progress} out of 300`;
+            progressParagraph.textContent = `Progress: ${data.progress} out of 320`;
         }
 
         document.getElementById('inProgressCanvas').addEventListener('click', function (event) {
