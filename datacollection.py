@@ -1,5 +1,6 @@
 import csv
 import time
+from random import shuffle
 
 
 class DataCollector:
@@ -9,12 +10,30 @@ class DataCollector:
         self.start_time = 0
         self.end_time = 0
         self.error_count = 0
+        self.diameters = [20, 40, 80, 160]
+        self.distances = [50, 100, 200, 400]
+        self.directions = [-1, 1]
+        self.final_array = []
 
     def create_participant(self, participant_number):
         number = str(participant_number)
         self.data_file = "participant" + number + ".csv"
         with open(self.data_file, 'w', newline='') as csvfile:
             pass
+
+    def pass_values(self):
+        diameter, distance, direction = self.final_array.pop() 
+        self.participant_data.extend([diameter, distance, direction]) 
+        return diameter, distance, direction
+
+    def create_target_list(self):
+        for i in range(10):
+            for i in range(len(self.diameters)):
+                for j in range(len(self.distances)):
+                    for k in range(len(self.directions)):
+                        self.final_array.append([self.diameters[i], self.distances[j], self.directions[k]])
+        shuffle(self.final_array)
+
 
     def initial_click(self):
         self.start_time = time.time()

@@ -1,7 +1,13 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Human Computer Interaction Project</title>
     <style>
-        body, html {
+        body,
+        html {
             margin: 0;
             padding: 0;
             height: 100%;
@@ -11,24 +17,42 @@
             width: 100%;
             height: 100%;
         }
+
+        #target {
+            width: 80px;
+            height: 80px;
+            position: absolute;
+            left: auto;
+            top: 50%;
+            transform: translate(0%, 0%);
+            visibility: hidden;
+        }
+
+        #centerButton {
+            width: 80px;
+            height: 80px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+        }
     </style>
 </head>
+
 <body>
     <div id="inProgressCanvas" onclick="">
-    <h1>Data Collection</h1>
-    <input type="number" id="participantNumber" placeholder="Participant Number">
-    <button id="startParticipantBtn" onclick="createParticipant()">Start New Participant</button>
-    <button onclick="initialClick()">Initial Click</button>
-    <button onclick="targetClick()">Target Click</button>
-    <button onclick="endSession()">End Session</button>
-    <p id="progressParagraph"></p>
+        <h1>Data Collection</h1>
+        <input type="number" id="participantNumber" placeholder="Participant Number">
+        <button id="startParticipantBtn" onclick="createParticipant()">Start New Participant</button>
+        <button id="centerButton" onclick="initialClick()">Initial Click</button>
+        <button id="target"  onclick="targetClick()">Target Click</button>
+        <button onclick="endSession()">End Session</button>
+        <p id="progressParagraph"></p>
     </div>
     <script>
-
         let errorCount = 0;
 
-        function addError(event){
-                errorCount++;
+        function addError(event) {
+            errorCount++;
         }
 
         function onPageLoad() {
@@ -56,24 +80,56 @@
             }
             participantInput.style.display = 'none';
             startParticipantBtn.style.display = 'none';
+            createTargetList();
+        }
+
+        async function passValues() {
+            const button = document.getElementById('target');
+            const values = await fetch('/pass_values');
+            const passedValues = await values.json();
+            button.style.width = `${passedValues.lists.at(0)}px`;
+            button.style.height = `${passedValues.lists.at(0)}px`;
+
+            // Calculate the new position
+            const distance = passedValues.lists.at(1);
+            const direction = passedValues.lists.at(2);
+            const centerX = window.innerWidth / 2;
+            const newPosition = centerX + (distance * direction);
+
+            // Set the new position
+            button.style.position = 'absolute';
+            button.style.left = `${newPosition}px`;
+            button.style.top = '50%';
+            button.style.transform = 'translate(-50%, -50%)';
+        }
+
+        async function createTargetList() {
+            await fetch('/create_target_list');
         }
 
         async function initialClick() {
             errorCount = 0;
             await fetch('/initial_click', { method: 'POST', });
+            document.getElementById('centerButton').style.visibility = 'hidden';
+            document.getElementById('target').style.visibility = 'visible';
         }
 
         async function targetClick() {
-            await fetch('/target_click', { method: 'POST',
-            headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                    },
-                    body: `error_count=${errorCount}`,});
+            await fetch('/target_click', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `error_count=${errorCount}`,
+            });
             errorCount = 0;
+            await passValues();
+            document.getElementById('centerButton').style.visibility = 'visible';
+            document.getElementById('target').style.visibility = 'hidden';
         }
 
-        async function endSession(){
-            await fetch('/end_session', {method: 'POST',});
+        async function endSession() {
+            await fetch('/end_session', { method: 'POST', });
             window.location.href = "/"
         }
 
@@ -81,10 +137,10 @@
             const response = await fetch('/get_progress');
             const data = await response.json();
             const progressParagraph = document.getElementById('progressParagraph');
-            progressParagraph.textContent = `Progress: ${data.progress} out of 300`;
+            progressParagraph.textContent = `Progress: ${data.progress} out of 320`;
         }
 
-        document.getElementById('inProgressCanvas').addEventListener('click', function(event) {
+        document.getElementById('inProgressCanvas').addEventListener('click', function (event) {
             // Check if the clicked element is not a button or input
             if (event.target.tagName !== 'BUTTON' && event.target.tagName !== 'INPUT') {
                 addError();
@@ -92,4 +148,5 @@
         });
     </script>
 </body>
+
 </html>
